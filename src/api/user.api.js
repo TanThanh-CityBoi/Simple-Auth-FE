@@ -6,7 +6,7 @@ function handleResponse(response) {
             return data.data;
         },
         error => {
-            return Promise.reject(error.response.message);
+            return Promise.reject(error?.response?.data?.message || error?.response?.data || "INTERNAL SERVER ERROR");
         }
     );
 }
@@ -29,7 +29,7 @@ function signInGoogle(data) {
     );
 }
 
-function signUp(data) {
+async function signUp(data) {
     return handleResponse(
         ajaxHelper.post(CONFIG_URL.SIGN_UP, data, {})
     );

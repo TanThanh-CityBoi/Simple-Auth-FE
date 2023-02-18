@@ -1,0 +1,35 @@
+.sign-up-wrapper {
+    height: 100vh;
+    align-items: center;
+    background-color: #566eef;
+
+    .sign-up-form {
+        width: 40rem;
+        border-radius: .5rem;
+        padding: 5rem;
+        background-color: #ffffff;
+
+        input {
+            width: 100%;
+            height: 4rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            font-size: 1.5rem;
+            border: solid 1px #858585;
+            border-radius: .3rem;
+        }
+
+        :focus-visible {
+            outline: none;
+        }
+    }
+
+    .submit-btn {
+        background-color: #566eef;
+    }
+
+    .sign-in-btn {
+        background-color: #cecece;
+        color: #000000;
+    }
+}

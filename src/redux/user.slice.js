@@ -1,29 +1,23 @@
 import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { userAPI } from '../api/user.api'
+import { toast } from 'react-toastify';
+
 
 const signOut = createAction('auth/signOut');
 const signIn = createAsyncThunk(
   'auth/signIn',
   async ({ email, password }) => {
-    const response = await userAPI.signIn({ email, password })
-    return response.data
-  }
-)
-const signUp = createAsyncThunk(
-  'auth/signUp',
-  async (data) => {
-    const response = await userAPI.signUp(data)
-    return response.data
+    return await userAPI.signIn({ email, password });
   }
 )
 
-export const userAction = { signIn, signUp, signOut }
+export const userAction = { signIn, signOut }
 
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
     isLogedIn: false,
-    currentUser: {},
+    currentUser: null,
     errorMessage: ''
   },
   reducers: {
@@ -31,12 +25,17 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(signIn.fulfilled, (state, action) => {
       state.isLogedIn = true
-      state.currentUser = action.payload.user
+      state.currentUser = action.payload.data.user
+      toast.success(action.payload.message || "LOGIN SUCCESSFULLY")
+    })
+    builder.addCase(signIn.rejected, (state, action) => {
+      state.isLogedIn = false;
+      state.currentUser = null
+      toast.error(action.error.message || "LOGIN FAIL")
     })
     builder.addCase(signOut, (state) => {
       state.isLogedIn = false;
       state.currentUser = null;
     })
-    builder.addCase(signUp, (state, action) => { })
   }
 })

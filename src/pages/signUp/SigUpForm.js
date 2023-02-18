@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-function SignInForm(props) {
+function SignUpForm(props) {
     const formik = useFormik({
         validateOnChange: true,
         validateOnBlur: true,
@@ -10,15 +10,21 @@ function SignInForm(props) {
         initialValues: {
             email: "",
             password: "",
+            confirmPassword: "",
+            firstName: "",
+            lastName: ""
         },
         validationSchema: Yup.object({
-            email: Yup.string().email("Invalid email").required("Email Required"),
+            email: Yup.string().email("Invalid email").required("Required"),
             password: Yup.string()
-                .required("Password Required")
+                .required("Required")
                 .matches(
                     /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
                     "Password must be minimum eight characters, at least one letter and one number"
                 ),
+            confirmPassword: Yup.string()
+                .required("Required")
+                .oneOf([Yup.ref("password"), null], "Passwords do not match"),
         }),
         onSubmit: (values) => {
             props.onSubmit(values);
@@ -43,6 +49,28 @@ function SignInForm(props) {
 
             <div>
                 <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="FirstName..."
+                    value={formik.values.firstName}
+                    onChange={formik.handleChange}
+                />
+            </div>
+
+            <div>
+                <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="LastName..."
+                    value={formik.values.lastName}
+                    onChange={formik.handleChange}
+                />
+            </div>
+
+            <div>
+                <input
                     type="password"
                     id="password"
                     name="password"
@@ -55,9 +83,23 @@ function SignInForm(props) {
                 )}
             </div>
 
-            <button className="btn submit-btn mt-4 mb-3" type="submit"> Sign In </button>
+            <div>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm password..."
+                    value={formik.values.confirmPassword}
+                    onChange={formik.handleChange}
+                />
+                {formik.errors.confirmPassword && formik.touched.confirmPassword && (
+                    <p className="input-error-validation"> {formik.errors.confirmPassword} </p>
+                )}
+            </div>
+
+            <button className="btn submit-btn mt-4 mb-3" type="submit"> Sign Up </button>
         </form>
     );
 }
 
-export default SignInForm;
+export default SignUpForm;
