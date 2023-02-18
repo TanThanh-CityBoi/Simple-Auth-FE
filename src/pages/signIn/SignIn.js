@@ -1,19 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SignInForm from './SignInForm';
+import { FaGoogle } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { userAction } from '../../redux/user.slice'
 import './SignIn.scss';
 
 function SignIn() {
-    function HandleSignIn(values) { }
+    const dispatch = useDispatch()
+    function handleSignIn(values) {
+        dispatch(userAction.signIn(values))
+    }
+    function googleSignIn() { }
     return (
-        <div className="">
-            <SignInForm onSubmit={HandleSignIn} />
-            <p style={{ marginTop: "18px" }}>
-                Don't have an account?{" "}
-                <Link to="/sign-up">
-                    <strong>Sign up here</strong>
-                </Link>
-            </p>
+        <div className="sign-in-wrapper d-flex justify-content-center">
+            <div className="sign-in-form">
+                <h1 className='text-center font-weight-bold mb-5'>Sign In</h1>
+                <SignInForm onSubmit={handleSignIn} />
+                <span className="span-or d-block text-center">Or continue with</span>
+                <button onClick={() => googleSignIn()} className='btn gg-btn mt-3'>
+                    <FaGoogle /> Google
+                </button>
+
+                <p className='sign-up mt-2 text-center'>
+                    Don't have an account?{" "}
+                    <Link to="/sign-up">
+                        <strong className='strong'>Sign up</strong>
+                    </Link>
+                </p>
+            </div>
         </div >
     );
 }

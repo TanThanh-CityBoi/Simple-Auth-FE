@@ -46,7 +46,7 @@ function SignInForm(props) {
                     type="password"
                     id="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder="Password..."
                     value={formik.values.password}
                     onChange={formik.handleChange}
                 />
@@ -55,7 +55,7 @@ function SignInForm(props) {
                 )}
             </div>
 
-            <button type="submit"> Đăng nhập </button>
+            <button className="btn sign-in-btn mt-4 mb-3" type="submit"> Sign In </button>
         </form>
     );
 }

@@ -1,16 +1,8 @@
-import { createAction, createReducer } from '@reduxjs/toolkit'
+import { combineReducers } from 'redux'
+import { userSlice } from './user.slice'
 
-const signIn = createAction('auth/signIn')
-const signUp = createAction('auth/signUp')
-
-const initialState = {
-  isLogedIn: false,
-  userInfo: {}
-}
-const rootReducer = createReducer(initialState, (builder) => {
-  builder
-    .addCase(signIn, (state, action) => { })
-    .addCase(signUp, (state, action) => { })
+const rootReducer = combineReducers({
+  user: userSlice.reducer,
 })
 
 export default rootReducer

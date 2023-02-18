@@ -14,16 +14,13 @@ const loading = (
 );
 
 const Routers = () => {
-    const user = useSelector((state) => state.userInfo);
+    const user = useSelector((state) => state.user);
     return (
         <React.Suspense fallback={loading}>
             <Routes>
-                <Route path="/sign-in" name="SignIn" element={<SignIn />} />
-                <Route path="/sign-up" name="SignUp" element={<SignUp />} />
-                {user.isLoggedIn ?
-                    <Route index name="Home" element={<Home />} /> :
-                    <Route index name="SignIn" element={<Navigate to="/sign-in" />} />
-                }
+                <Route path="/" name="Home" element={user.isLogedIn ? <Home /> : <Navigate to="sign-in" />} />
+                <Route path="/sign-in" name="SignIn" element={user.isLogedIn ? <Navigate to="/" /> : <SignIn />} />
+                <Route path="/sign-up" name="SignUp" element={user.isLogedIn ? <Navigate to="/" /> : <SignUp />} />
             </Routes>
         </React.Suspense >
     );
