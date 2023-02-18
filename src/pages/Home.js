@@ -13,9 +13,11 @@ function Home() {
     }
 
     return (
-        <div>
-            <h1>Welcome {user.firstName} {user.lastName}</h1>
-            <button onClick={handleLogout}>Logout</button>
+        <div className='home-wrapper'>
+            <div>
+                <h1>Welcome {user.firstName} {user.lastName}</h1>
+                <button className='btn btn-logout' onClick={handleLogout}>Logout</button>
+            </div>
         </div >
     );
 }
