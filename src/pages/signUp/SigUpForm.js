@@ -108,7 +108,7 @@ function SignUpForm(props) {
                 )}
             </div>
 
-            <button className="btn submit-btn mt-4 mb-3" type="submit"> Sign Up </button>
+            <button className="btn submit-btn mt-5 mb-3" type="submit"> Sign Up </button>
         </form>
     );
 }

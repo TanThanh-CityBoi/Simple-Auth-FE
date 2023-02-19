@@ -62,7 +62,7 @@ function SignInForm(props) {
                 )}
             </div>
 
-            <button className="btn submit-btn mt-4 mb-3" type="submit"> Sign In </button>
+            <button className="btn submit-btn mt-5 mb-3" type="submit"> Login </button>
         </form>
     );
 }

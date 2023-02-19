@@ -50,7 +50,8 @@
   }
 
   .sign-up {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    font-weight: 500;
   }
 
   .submit-btn {
@@ -58,6 +59,11 @@
   }
 
   .gg-btn {
+    svg{
+      font-size: 1.6rem;
+      margin-bottom: 2px;
+      margin-right: .4rem;
+    }
     background-color: #e24747;
   }
 

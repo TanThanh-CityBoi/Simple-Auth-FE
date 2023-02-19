@@ -21,17 +21,17 @@ function SignIn() {
     return (
         <div className="sign-in-wrapper d-flex justify-content-center">
             <div className="sign-in-form mt-5 mb-5">
-                <h1 className='text-center font-weight-bold mb-5'>Sign In</h1>
+                <h1 className='text-center t-26 font-weight-bold mb-5'>Login</h1>
                 <SignInForm onSubmit={handleSignIn} />
                 <span className="span-or d-block text-center">Or continue with</span>
                 <button onClick={() => googleSignIn()} className='btn gg-btn mt-3'>
                     <FaGoogle /> Google
                 </button>
 
-                <p className='sign-up mt-2 text-center'>
-                    Don't have an account?{" "}
-                    <Link to="/sign-up">
-                        <strong className='strong'>Sign up</strong>
+                <p className='mt-3 t-14 text-center'>
+                    Don't have an account?
+                    <Link to="/sign-up" className='sign-up ms-2'>
+                        Sign up
                     </Link>
                 </p>
             </div>
