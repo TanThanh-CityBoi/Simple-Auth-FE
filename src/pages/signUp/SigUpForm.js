@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
+import { BiHide, BiShow } from "react-icons/bi"
 import * as Yup from "yup";
 
 function SignUpForm(props) {
+
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
     const formik = useFormik({
         validateOnChange: true,
         validateOnBlur: true,
@@ -71,13 +76,16 @@ function SignUpForm(props) {
 
             <div>
                 <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     id="password"
                     name="password"
                     placeholder="Password..."
                     value={formik.values.password}
                     onChange={formik.handleChange}
                 />
+                <button className="btn-show-password" type="button" onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? <BiShow /> : <BiHide />}
+                </button>
                 {formik.errors.password && formik.touched.password && (
                     <p className="input-error-validation"> {formik.errors.password} </p>
                 )}
@@ -85,13 +93,16 @@ function SignUpForm(props) {
 
             <div>
                 <input
-                    type="password"
+                    type={showConfirmPassword ? "text" : "password"}
                     id="confirmPassword"
                     name="confirmPassword"
                     placeholder="Confirm password..."
                     value={formik.values.confirmPassword}
                     onChange={formik.handleChange}
                 />
+                <button className="btn-show-password" type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                    {showConfirmPassword ? <BiShow /> : <BiHide />}
+                </button>
                 {formik.errors.confirmPassword && formik.touched.confirmPassword && (
                     <p className="input-error-validation"> {formik.errors.confirmPassword} </p>
                 )}
