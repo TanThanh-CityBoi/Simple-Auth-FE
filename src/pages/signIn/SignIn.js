@@ -20,7 +20,7 @@ function SignIn() {
     const googleSignIn = useGoogleLogin({ onSuccess: handleGoogleSignInSuccess });
     return (
         <div className="sign-in-wrapper d-flex justify-content-center">
-            <div className="sign-in-form">
+            <div className="sign-in-form mt-5 mb-5">
                 <h1 className='text-center font-weight-bold mb-5'>Sign In</h1>
                 <SignInForm onSubmit={handleSignIn} />
                 <span className="span-or d-block text-center">Or continue with</span>
