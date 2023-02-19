@@ -1,12 +1,14 @@
 .sign-in-wrapper {
   min-height: 100vh;
+  min-width: 30rem;
   align-items: center;
   background-color: #566eef;
 
   .sign-in-form {
     width: 40rem;
+    min-width: 30rem;
     border-radius: .5rem;
-    padding: 5rem;
+    padding: 4em;
     background-color: #ffffff;
 
     input{
