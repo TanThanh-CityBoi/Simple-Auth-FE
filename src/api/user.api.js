@@ -1,4 +1,5 @@
 import ajaxHelper from ".";
+import { config } from "../config";
 
 function handleResponse(response) {
     return response.then(
@@ -11,7 +12,7 @@ function handleResponse(response) {
     );
 }
 
-const BASE_URL = "http://localhost:5000/";
+const BASE_URL = config.API_URL;
 const CONFIG_URL = {
     SIGN_IN: BASE_URL + 'sign-in',
     SIGN_IN_GOOGLE: BASE_URL + 'sign-in-google',
