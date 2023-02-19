@@ -48,19 +48,16 @@ body {
   align-items: center;
 
   .btn-logout {
-    color: #000000;
-    border: solid 1px #000000;
-
-    :hover {
-      border-color: #000000 !important;
-    }
+    background-color: #566eef;
+    font-size: 1.6rem;
+    font-weight: 500
   }
 }
 
-.t-14{
+.t-14 {
   font-size: 1.4rem;
 }
 
-.t-26{
+.t-26 {
   font-size: 2.6rem;
 }
